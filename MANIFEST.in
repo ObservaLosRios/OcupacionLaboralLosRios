@@ -1,0 +1,32 @@
+# Incluir archivos importantes en la distribución
+include README.md
+include LICENSE
+include requirements.txt
+include setup.cfg
+include MANIFEST.in
+
+# Incluir archivos de configuración
+recursive-include config *.yaml *.yml *.json *.toml
+
+# Incluir documentación
+recursive-include docs *.md *.rst *.txt
+
+# Incluir datos de ejemplo (sin incluir datos sensibles)
+recursive-include data/external *.csv *.json *.yaml
+recursive-include data/raw *.md README.*
+
+# Incluir notebooks de ejemplo
+recursive-include notebooks *.ipynb *.md
+
+# Incluir tests
+recursive-include tests *.py
+
+# Excluir archivos innecesarios
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *~
+global-exclude .DS_Store
+global-exclude __pycache__/
+prune venv/
+prune .git/
+prune logs/
