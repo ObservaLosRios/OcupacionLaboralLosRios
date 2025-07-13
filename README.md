@@ -56,9 +56,9 @@ OcupacionLaboral_LosRios/
 ├── 📂 docs/                   # Documentación del proyecto
 ├── 📂 logs/                   # Archivos de log
 ├── 📂 notebooks/              # Jupyter notebooks para análisis
-│   ├── 01_exploratory_data_analysis.ipynb
-│   ├── 02_data_quality_analysis.ipynb
-│   └── 03_temporal_analysis.ipynb
+│   ├── ocupados_categoria_ocupacional.ipynb        # Análisis básico por categoría
+│   ├── ocupados_grupo_ocupacional_ciuo88.ipynb     # Análisis por grupo ocupacional
+│   └── analisis_avanzado_los_rios.ipynb           # Análisis avanzado con The Economist styling
 ├── 📂 reports/                # Reportes generados
 │   ├── 📂 figures/           # Gráficos y visualizaciones
 │   └── 📂 tables/            # Tablas de resultados
@@ -128,13 +128,16 @@ python -m pytest tests/
 
 ## 🚀 Uso Rápido
 
+### Uso Rápido
+
 ### Análisis Básico
 ```python
-from src.etl.main import run_etl_pipeline
+from src.etl.processors import DataProcessor
 from src.visualization.dashboard import create_dashboard
 
-# Ejecutar pipeline ETL
-data = run_etl_pipeline()
+# Procesamiento de datos
+processor = DataProcessor()
+data = processor.process_all_datasets()
 
 # Crear dashboard
 app = create_dashboard(data)
@@ -143,11 +146,11 @@ app.run_server(debug=True)
 
 ### Ejecutar desde línea de comandos
 ```bash
-# Ejecutar análisis completo
+# Ejecutar dashboard completo
 python main.py
 
-# Solo ETL
-python -m src.etl.main
+# Solo procesamiento ETL
+python -m src.etl.processors
 
 # Solo dashboard
 python -m src.visualization.dashboard
@@ -158,9 +161,9 @@ python -m src.visualization.dashboard
 # Iniciar Jupyter Lab
 jupyter lab
 
-# Navegar a notebooks/ y abrir:
-# - exploratory_data_analysis.ipynb (análisis exploratorio)
-# - temporal_analysis.ipynb (análisis temporal)
+# Abrir notebooks recomendados:
+# - analisis_avanzado_los_rios.ipynb (análisis completo)
+# - ocupados_categoria_ocupacional.ipynb (análisis básico)
 ```
 
 ## 📊 Datos
@@ -233,9 +236,9 @@ mypy src/
 ## 📚 Documentación
 
 ### Notebooks de Análisis
-- **`exploratory_data_analysis copy 2.ipynb`**: Análisis exploratorio completo con visualizaciones corregidas
-- **Análisis temporal**: Evaluación de tendencias y detección de anomalías
-- **Análisis de calidad**: Validación y limpieza de datos
+- **`ocupados_categoria_ocupacional.ipynb`**: Análisis básico por categoría ocupacional
+- **`ocupados_grupo_ocupacional_ciuo88.ipynb`**: Análisis por grupo ocupacional CIUO88
+- **`analisis_avanzado_los_rios.ipynb`**: Análisis avanzado con visualizaciones The Economist, análisis de género, estabilidad laboral y detección de anomalías
 
 ### Documentación Técnica
 - Documentación de API en `docs/`
@@ -274,7 +277,12 @@ mypy src/
 📧 Email: bruno.sanmartin@uach.cl  
 🏛️ Institución: Universidad Austral de Chile  
 💼 LinkedIn: [bruno-sanmartin-navarro](https://linkedin.com/in/bruno-sanmartin-navarro)  
-🐙 GitHub: [@brunosanmartin](https://github.com/brunosanmartin)
+🐙 GitHub Personal: [@brunosanmartin](https://github.com/brunosanmartin)  
+🏢 Organización: [ObservaLosRios](https://github.com/ObservaLosRios)
+
+### 📍 Proyecto Repositorio
+- **URL**: https://github.com/ObservaLosRios/OcupacionLaboralLosRios
+- **Organización**: ObservaLosRios - Observatorio Económico de Los Ríos
 
 ## 📄 Licencia
 
@@ -380,12 +388,3 @@ Los logs se guardan en:
 - [ ] Notificaciones automáticas
 - [ ] Integración con sistemas externos
 
-## Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
-
-## Contacto
-
-Para preguntas o sugerencias sobre este proyecto, puedes contactar al equipo de desarrollo.
-
---
