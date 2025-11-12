@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Visualización - Universidad Austral de Chile</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="logos-container">
+            <img src="thumbnail_Logo observa.png" alt="Universidad Austral de Chile - Centro de Estudios Regionales" class="header-logo-left">
+            <img src="thumbnail_images.png" alt="Logo Región" class="header-logo">
+        </div>
+        <div class="header-content">
+            <h1 class="main-title" id="main-title">Plantilla de Visualización de Datos</h1>
+            <p class="subtitle" id="subtitle">Universidad Austral de Chile - Centro de Estudios Regionales</p>
+        </div>
+    </header>
+    
+    <!-- Navegación -->
+    <nav class="nav-container">
+        <div class="nav-links" id="nav-links">
+            <span class="nav-link active" data-section="grupo-ocupacional">Panorama Ocupacional</span>
+            <span class="nav-link" data-section="categoria-ocupacional">Dinámica por Género</span>
+            <span class="nav-link" data-section="estabilidad-laboral">Pulso de Estabilidad</span>
+            <span class="nav-link" data-section="genero-sectores">Sectores Clave por Género</span>
+            <span class="nav-link" data-section="evolucion-sectorial">Evolución Sectorial</span>
+            <span class="nav-link" data-section="trabajos-comunes">Trabajos Más Comunes</span>
+            <span class="nav-link" data-section="participacion-genero">Participación de Género</span>
+            <span class="nav-link" data-section="estructura-sectorial">Estructura Sectorial</span>
+        </div>
+    </nav>
+    
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Visualización: Grupo Ocupacional -->
+        <section id="grupo-ocupacional" class="section active">
+            <h2 class="section-title">Panorama por Grupo Ocupacional</h2>
+            <div class="chart-section">
+                <div class="chart-embed chart-embed--wide">
+                    <div id="16f92e65-4ab7-4999-8340-0c67cbd2c60b" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Evolución por Género -->
+        <section id="categoria-ocupacional" class="section">
+            <h2 class="section-title">Evolución del Empleo por Género</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="c39f245b-ad01-49ae-9b10-5fc558fa4494" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Estabilidad Laboral -->
+        <section id="estabilidad-laboral" class="section">
+            <h2 class="section-title">Análisis de Estabilidad Laboral</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="3eb19530-b4fd-41fe-b20d-c2576a4b1d6d" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Sectores Estratégicos por Género -->
+        <section id="genero-sectores" class="section">
+            <h2 class="section-title">Comparativo de Género en Sectores Estratégicos</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="19ed95b5-a42d-4831-b6f5-6da45745280e" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Evolución Sectorial -->
+        <section id="evolucion-sectorial" class="section">
+            <h2 class="section-title">Evolución Temporal Sectorial 2010-2019</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="aeedbf19-72f2-407c-8696-29fe251f0886" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Trabajos Más Comunes -->
+        <section id="trabajos-comunes" class="section">
+            <h2 class="section-title">Trabajos Más Comunes en la Región</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="b5a5d5b8-4279-4feb-aee6-4a5142d0b71c" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Participación de Género -->
+        <section id="participacion-genero" class="section">
+            <h2 class="section-title">Participación de Mujeres por Sector Laboral</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="c39601bf-93e6-425a-9931-e1a836f9b1e7" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+
+        <!-- Visualización: Estructura Sectorial -->
+        <section id="estructura-sectorial" class="section">
+            <h2 class="section-title">Estructura Sectorial del Empleo Regional</h2>
+            <div class="chart-section">
+                <div class="chart-embed">
+                    <div id="e0ec7aa7-e263-46ed-b579-ad2add9c7671" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+</section>
+        
+        <!-- Secciones dinámicas se generarán aquí -->
+        <div id="dynamic-sections"></div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text" id="footer-text">
+            Desarrollado con Plantilla de Visualización<br>
+            Universidad Austral de Chile - Centro de Estudios Regionales
+        </p>
+        <img src="thumbnail_logo cer.png" alt="Universidad Austral de Chile - Centro de Estudios Regionales" class="footer-logo">
+    </footer>
+
+    <!-- Modal de configuración -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: #1B4F72; margin-bottom: 20px;">Configuración de la Plantilla</h2>
+            
+            <div class="config-section">
+                <h3>Información General</h3>
+                <label for="title-input">Título Principal:</label>
+                <input type="text" id="title-input" placeholder="Ej: Análisis de Ventas 2024">
+                
+                <label for="subtitle-input">Subtítulo:</label>
+                <input type="text" id="subtitle-input" placeholder="Ej: Reporte Trimestral de Resultados">
+                
+                <label for="footer-input">Texto del Footer:</label>
+                <textarea id="footer-input" placeholder="Ej: Análisis desarrollado por...&#10;Empresa - Departamento"></textarea>
+            </div>
+            
+            <div class="config-section">
+                <h3>Datos JSON</h3>
+                <label for="data-input">Datos (formato JSON):</label>
+                <textarea id="data-input" placeholder='Ejemplo:
+{
+  "charts": {
+    "ventas": {
+      "title": "Ventas por Mes",
+      "type": "bar",
+      "data": [{"mes": "Enero", "valor": 1000}, {"mes": "Febrero", "valor": 1200}]
+    },
+    "usuarios": {
+      "title": "Usuarios Activos",
+      "type": "line", 
+      "data": [{"fecha": "2024-01", "cantidad": 500}, {"fecha": "2024-02", "cantidad": 650}]
+    }
+  }
+}'></textarea>
+            </div>
+            
+            <div id="status-message"></div>
+            
+            <button class="btn" onclick="applyConfiguration()">Aplicar Configuración</button>
+            <button class="btn" onclick="loadExampleData()" style="background: #6c757d; margin-left: 10px;">Cargar Datos de Ejemplo</button>
+        </div>
+    </div>
+
+    <!-- Tooltip global -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="https://cdn.plot.ly/plotly-3.2.0.min.js" defer></script>
+    <script src="interactive.js" defer></script>
+    <script src="charts.js" defer></script>
+</body>
+</html>
