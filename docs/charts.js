@@ -1571,6 +1571,39 @@ function resizeTargets(sectionId) {
     });
 }
 
+function reflowHighcharts(sectionId) {
+    const highcharts = window.Highcharts;
+    if (!highcharts || !Array.isArray(highcharts.charts)) {
+        return;
+    }
+
+    const scope = sectionId ? document.getElementById(sectionId) : document;
+    if (!scope) {
+        return;
+    }
+
+    const chartsInScope = highcharts.charts.filter((chart) => {
+        if (!chart || !chart.renderTo) {
+            return false;
+        }
+        return scope === document ? true : scope.contains(chart.renderTo);
+    });
+
+    if (!chartsInScope.length) {
+        return;
+    }
+
+    requestAnimationFrame(() => {
+        chartsInScope.forEach((chart) => {
+            try {
+                chart.reflow();
+            } catch {
+                // ignore
+            }
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     renderPanoramaHighcharts();
     renderDinamicaGeneroHighcharts();
@@ -1585,18 +1618,25 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.section').forEach((section) => {
             markSectionNeedsResize(section);
         });
+        reflowHighcharts();
         resizeTargets();
     });
 });
 
 window.resizeCharts = (sectionId) => {
+    reflowHighcharts(sectionId);
+
     if (!sectionId) {
         resizeTargets();
         return;
     }
+
     const section = document.getElementById(sectionId);
-    if (!section || !section.hasAttribute(RESIZE_PENDING_ATTR)) {
+    if (!section) {
         return;
     }
-    resizeTargets(sectionId);
+
+    if (section.hasAttribute(RESIZE_PENDING_ATTR)) {
+        resizeTargets(sectionId);
+    }
 };
