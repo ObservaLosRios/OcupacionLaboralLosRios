@@ -158,6 +158,7 @@ function openDataTable(gd, rowsOverride) {
 // Panorama Ocupacional (Highcharts)
 // =============================
 const PANORAMA_HIGHCHART_ID = '16f92e65-4ab7-4999-8340-0c67cbd2c60b';
+const TASA_OCUPACION_HIGHCHART_ID = 'tasa-ocupacion-chart';
 const GENERO_HIGHCHART_ID = 'c39f245b-ad01-49ae-9b10-5fc558fa4494';
 const ESTABILIDAD_HIGHCHART_ID = '3eb19530-b4fd-41fe-b20d-c2576a4b1d6d';
 const SECTORES_GENERO_HIGHCHART_ID = '19ed95b5-a42d-4831-b6f5-6da45745280e';
@@ -323,6 +324,72 @@ function renderPanoramaHighcharts() {
                 data,
             },
         ],
+    });
+}
+
+// =============================
+// Tasa de Ocupación Laboral (Highcharts)
+// =============================
+function renderTasaOcupacionHighcharts() {
+    const container = document.getElementById(TASA_OCUPACION_HIGHCHART_ID);
+    if (!container || typeof Highcharts === 'undefined') return;
+
+    const years = [
+        '2010', '2011', '2012', '2013', '2014',
+        '2015', '2016', '2017', '2018', '2019',
+        '2020', '2021', '2022', '2023', '2024',
+    ];
+    const values = [49.1, 52.5, 55.3, 57.1, 57.1, 57.0, 58.4, 60.4, 59.1, 58.2, 48.1, 48.9, 52.9, 53.1, 54.7];
+
+    Highcharts.chart(TASA_OCUPACION_HIGHCHART_ID, {
+        chart: {
+            type: 'line',
+            height: 520,
+            spacing: [20, 30, 30, 40],
+        },
+        title: {
+            useHTML: true,
+            text: '<span style="color:#1f77b4;">▬▬</span> <b style="color:#2C3E50;">TASA DE OCUPACIÓN LABORAL</b> <span style="color:#1f77b4;">▬▬</span>',
+            align: 'center',
+            margin: 30,
+        },
+        xAxis: {
+            categories: years,
+            tickmarkPlacement: 'on',
+            labels: { style: { color: '#34495E', fontSize: '11px' } },
+        },
+        yAxis: {
+            title: {
+                text: '<b style="color:#2C3E50;">Tasa de ocupación (%)</b>',
+                useHTML: true,
+            },
+            labels: {
+                style: { color: '#34495E', fontSize: '11px' },
+                format: '{value:.1f}',
+            },
+        },
+        tooltip: {
+            shared: true,
+            useHTML: true,
+            pointFormat: '<b style="color:#1f77b4;">{point.y:.1f}%</b>',
+        },
+        legend: { enabled: false },
+        credits: { enabled: false },
+        exporting: {
+            enabled: true,
+            buttons: {
+                contextButton: {
+                    menuItems: ['viewFullscreen', 'printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadSVG', 'separator', 'downloadCSV', 'downloadXLS', 'viewData'],
+                },
+            },
+        },
+        series: [{
+            name: 'Tasa de ocupación laboral',
+            data: values,
+            color: '#1f77b4',
+            marker: { enabled: true, radius: 3 },
+            lineWidth: 3,
+        }],
     });
 }
 
@@ -1606,6 +1673,7 @@ function reflowHighcharts(sectionId) {
 
 document.addEventListener("DOMContentLoaded", () => {
     renderPanoramaHighcharts();
+    renderTasaOcupacionHighcharts();
     renderDinamicaGeneroHighcharts();
     renderEstabilidadHighcharts();
     renderSectoresGeneroHighcharts();
